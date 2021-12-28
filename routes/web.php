@@ -17,5 +17,17 @@ Route::get('/', function () {
 
 route::group(['prefix' => 'admin'],
 function() {
-  Route::get('item/create','Admin\ItemlistController@add');
+  Route::get('item/create','Admin\ItemlistController@add')->middleware('auth');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
