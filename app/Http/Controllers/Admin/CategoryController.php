@@ -12,6 +12,18 @@ class CategoryController extends Controller
   }
 
   public function create(Request $request){
-    return redirect('admin.categories.create');
+
+    // Varidationを行う
+    $this->validate($request, Category::$rules);
+
+    $category = new Category;
+    $form = $request->all();
+
+    unset($form['_token']);
+
+    $category->fill($form);
+    $category->save();
+
+    return redirect('admin/category/create');
   }
 }
