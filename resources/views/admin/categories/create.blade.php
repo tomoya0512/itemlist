@@ -2,12 +2,12 @@
 @extends('layouts.admin')
 
 <!-- admin.blade.phpの@yield('title')に'持ち物の新規作成'を埋め込む -->
-@section('title', '持ち物の新規作成')
+@section('title', 'カテゴリーの新規作成')
 
 <!-- admin.blade.phpの@yield('content')に以下のタグを埋め込 -->
 @section('content')
   <div class="container">
-    <h2>持ち物の新規作成</h2>
+    <h2>カテゴリーの新規作成</h2>
   </div>
   @if (count($errors) > 0)
     <ul>
@@ -16,16 +16,17 @@
       @endforeach
     </ul>
   @endif
-  <form action="{{ action('Admin\ItemlistController@create') }}" method="post" enctype="multipart/form-data">
-    <label>物の名称</label>
-    <input type="text" name="item_name" value="{{ old('item_name') }}">
+  <form action="{{ action('Admin\CategoryController@create') }}" method="post" enctype="multipart/form-data">
+    <label>カテゴリー名</label>
+    <input type="text" name="name" value="{{ old('category_name') }}">
     <br>
 
-    <label>カテゴリー</label>
-    <input type="text" name="category_id" value="{{ old('category_id') }}">
+    <label>アイコン</label>
+    <input type="text" name="icon" value="{{ old('category_icon') }}">
     <br>
 
     {{ csrf_field() }}
     <input type="submit" value="追加">
   </form>
+
 @endsection

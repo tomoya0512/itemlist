@@ -11,7 +11,7 @@ class ItemlistController extends Controller
       return view('admin.item.create');
     }
 
-    public function create(){
+    public function create(Request $request){
       return redirect('admin/item/create');
     }
 }

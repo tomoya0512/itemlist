@@ -17,7 +17,10 @@ Route::get('/', function () {
 
 route::group(['prefix' => 'admin'],
 function() {
+  Route::get('category/create','Admin\CategoryController@add')->middleware('auth');
+  Route::post('category/create','Admin\CategoryController@create')->middleware('auth');
   Route::get('item/create','Admin\ItemlistController@add')->middleware('auth');
+  Route::post('item/create','Admin\ItemlistController@create')->middleware('auth');
 });
 
 Auth::routes();
