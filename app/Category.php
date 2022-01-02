@@ -11,4 +11,5 @@ class Category extends Model
   public static $rules = array(
     'name' => 'required',
     'icon' => 'required',
+  );
 }

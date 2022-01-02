@@ -18,11 +18,11 @@
   @endif
   <form action="{{ action('Admin\CategoryController@create') }}" method="post" enctype="multipart/form-data">
     <label>カテゴリー名</label>
-    <input type="text" name="name" value="{{ old('category_name') }}">
+    <input type="text" name="name" value="{{ old('name') }}">
     <br>
 
     <label>アイコン</label>
-    <input type="text" name="icon" value="{{ old('category_icon') }}">
+    <input type="text" name="icon" value="{{ old('icon') }}">
     <br>
 
     {{ csrf_field() }}
