@@ -16,13 +16,13 @@
       @endforeach
     </ul>
   @endif
-  <form action="{{ action('Admin\ItemlistController@create') }}" method="post" enctype="multipart/form-data">
-    <label>物の名称</label>
+  <form action="{{ action('Admin\ItemController@create') }}" method="post" enctype="multipart/form-data">
+    <label>アイテム名</label>
     <input type="text" name="item_name" value="{{ old('item_name') }}">
     <br>
 
-    <label>カテゴリー</label>
-    <input type="text" name="category_id" value="{{ old('category_id') }}">
+    <label>カテゴリー名</label>
+    <{{Form::select('category_name','$category_list->name','選択してください') }}>
     <br>
 
     {{ csrf_field() }}

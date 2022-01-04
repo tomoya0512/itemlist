@@ -21,10 +21,6 @@
     <input type="text" name="name" value="{{ old('name') }}">
     <br>
 
-    <label>アイコン</label>
-    <input type="text" name="icon" value="{{ old('icon') }}">
-    <br>
-
     {{ csrf_field() }}
     <input type="submit" value="追加">
   </form>

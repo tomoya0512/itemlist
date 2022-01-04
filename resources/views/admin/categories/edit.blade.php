@@ -14,9 +14,7 @@
     @endif
     <label for="name">カテゴリー名</label>
     <input type="text" name="name" value="{{ $category_form->name }}">
-    <br>
-    <label for="icon">アイコン</label>
-    <input type="text" name="icon" value="{{ $category_form->icon }}">
+
     <br>
     <input type="hidden" name="id" value="{{ $category_form->id }}">
     {{ csrf_field() }}

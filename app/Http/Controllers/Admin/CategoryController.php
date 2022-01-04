@@ -65,5 +65,13 @@ class CategoryController extends Controller
     $category->fill($category_form)->save();
 
     return redirect('admin/category');
-}
+  }
+
+  public function delete(Request $request){
+      // 該当するNews Modelを取得
+      $category = Category::find($request->id);
+      // 削除する
+      $category->delete();
+      return redirect('admin/category/');
+  }
 }
