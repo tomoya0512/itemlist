@@ -68,7 +68,7 @@ class CategoryController extends Controller
   }
 
   public function delete(Request $request){
-      // 該当するNews Modelを取得
+      // 該当するCategory Modelを取得
       $category = Category::find($request->id);
       // 削除する
       $category->delete();

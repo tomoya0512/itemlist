@@ -21,9 +21,14 @@
     <input type="text" name="item_name" value="{{ old('item_name') }}">
     <br>
 
-    <label>カテゴリー名</label>
-    <{{Form::select('category_name','$category_list->name','選択してください') }}>
-    <br>
+    <div class="form-group">
+        <label>カテゴリー</label>
+        <select id="category-id" name="category_id">
+            @foreach ($categories as $category)
+                <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+            @endforeach
+        </select>
+      </div>
 
     {{ csrf_field() }}
     <input type="submit" value="追加">

@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Item;
-use App\Category;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+use App\Item;
+use App\Category;
 
 class ItemController extends Controller
 {
   public function add(){
+    $categories = Category::all();
     return view('admin.item.create');
   }
 
@@ -17,7 +18,6 @@ class ItemController extends Controller
 
     // Varidationを行う
     $this->validate($request, Item::$rules);
-    $category_list =  Category::select('name') -> orderBy('created_at', 'desc')->get(); 
 
     $item = new Item;
     $form = $request->all();
