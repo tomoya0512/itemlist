@@ -10,7 +10,7 @@ class Item extends Model
 
 
     public static $rules = array(
-      'item_name' => 'required',
-      'category_name' => 'required'
+      'name' => 'required',
+      'category_id' => 'required'
     );
 }

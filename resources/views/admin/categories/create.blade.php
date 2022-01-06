@@ -24,5 +24,6 @@
     {{ csrf_field() }}
     <input type="submit" value="追加">
   </form>
+  <a href="{{ action('Admin\CategoryController@index') }}" type="button">カテゴリー一覧へ戻る</a>
 
 @endsection

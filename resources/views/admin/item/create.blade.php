@@ -18,17 +18,19 @@
   @endif
   <form action="{{ action('Admin\ItemController@create') }}" method="post" enctype="multipart/form-data">
     <label>アイテム名</label>
-    <input type="text" name="item_name" value="{{ old('item_name') }}">
+    <input type="text" name="name" value="{{ old('name') }}">
     <br>
       <label>カテゴリー</label>
-      <select id="category-id">
+      <select name="category_id" id="category-id">
         <option value="">選択してください</option>
         @foreach ($categories as $category)
-          <option name='category_name'　value="{{ $category->id }}">{{ $category->name }}</option>
+          <option value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach
       </select>
 
     {{ csrf_field() }}
     <input type="submit" value="追加">
+    <br>
+    <a href="{{ action('Admin\ItemController@index') }}" type="button">アイテム一覧へ戻る</a>
   </form>
 @endsection

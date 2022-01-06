@@ -5,7 +5,9 @@
 @section('content')
    <h2>カテゴリー一覧</h2>
    <br>
-   <a href="{{ action('Admin\CategoryController@add') }}" type="button">新規作成</a>
+   <a href="{{ action('Admin\ItemController@index') }}" type="button">アイテム一覧へ</a>
+   <br>
+   <a href="{{ action('Admin\CategoryController@add') }}" type="button">カテゴリー新規作成</a>
    <br>
    <form action="{{ action('Admin\CategoryController@index') }}" method="get">
    <label>カテゴリー名</label>

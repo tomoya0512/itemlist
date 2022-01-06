@@ -39,7 +39,7 @@ class ItemController extends Controller
       // それ以外はすべてのアイテムを取得する
       $posts = Item::all();
     }
-    return view('admin.Item.index', ['posts' => $posts, 'name' => $name]);
+    return view('admin.item.index', ['posts' => $posts, 'name' => $name]);
   }
 
   public function edit(Request $request)
