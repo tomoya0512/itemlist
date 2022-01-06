@@ -20,15 +20,13 @@
     <label>アイテム名</label>
     <input type="text" name="item_name" value="{{ old('item_name') }}">
     <br>
-
-    <div class="form-group">
-        <label>カテゴリー</label>
-        <select id="category-id" name="category_id">
-            @foreach ($categories as $category)
-                <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
-            @endforeach
-        </select>
-      </div>
+      <label>カテゴリー</label>
+      <select id="category-id">
+        <option value="">選択してください</option>
+        @foreach ($categories as $category)
+          <option name='category_name'　value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+      </select>
 
     {{ csrf_field() }}
     <input type="submit" value="追加">
