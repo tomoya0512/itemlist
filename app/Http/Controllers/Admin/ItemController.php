@@ -11,7 +11,7 @@ class ItemController extends Controller
 {
   public function add(){
     $categories = Category::all();
-    return view('admin.item.create');
+    return view('admin.item.create', ['categories' => $categories]);
   }
 
   public function create(Request $request){
