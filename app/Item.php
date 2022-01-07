@@ -13,4 +13,10 @@ class Item extends Model
       'name' => 'required',
       'category_id' => 'required'
     );
+
+    public function categories()
+    {
+        return $this->hasMany('App\Category', 'foreign_key');
+
+    }
 }

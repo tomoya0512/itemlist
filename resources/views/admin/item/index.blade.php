@@ -30,7 +30,7 @@
         <tr>
           <th>{{ $item->id }}</th>
           <td>{{ str_limit($item->name, 100) }}</td>
-          <td>{{ str_limit($item->category_id) }}</td>
+          <td>{{ str_limit($category->name) }}</td>
           <td>
             <div>
               <a href="{{ action('Admin\ItemController@edit', ['id' => $item->id]) }}">編集</a>
