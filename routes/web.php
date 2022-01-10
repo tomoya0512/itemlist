@@ -52,6 +52,13 @@ route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function() {
   Route::get('item/edit', 'Admin\ItemController@edit');
   Route::post('item/edit', 'Admin\ItemController@update');
   Route::get('item/delete', 'Admin\ItemController@delete');
+
+  Route::get('home', 'AdminHomeController@index')->name('admin_auth.home');
+  Route::get('login', 'AdminAuth\LoginController@showLoginForm')->name('admin_auth.login');
+  Route::post('login', 'AdminAuth\LoginController@login')->name('admin_auth.login');
+  Route::post('logout', 'AdminAuth\LoginController@logout')->name('admin_auth.logout');
+  Route::get('register', 'AdminAuth\RegisterController@showRegisterForm')->name('admin_auth.register');
+  Route::post('register', 'AdminAuth\RegisterController@register')->name('admin_auth.register');
 });
 
 
