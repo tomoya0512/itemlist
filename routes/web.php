@@ -40,18 +40,18 @@ Route::group(['middleware' => 'auth:user'], function() {
 |--------------------------------------------------------------------------
 */
 route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function() {
-  Route::get('category/create','Admin\CategoryController@add')->middleware('auth');
-  Route::post('category/create','Admin\CategoryController@create')->middleware('auth');
-  Route::get('category', 'Admin\CategoryController@index')->middleware('auth');
-  Route::get('category/edit', 'Admin\CategoryController@edit')->middleware('auth');
-  Route::post('category/edit', 'Admin\CategoryController@update')->middleware('auth');
-  Route::get('category/delete', 'Admin\CategoryController@delete')->middleware('auth');
-  Route::get('item/create','Admin\ItemController@add')->middleware('auth');
-  Route::post('item/create','Admin\ItemController@create')->middleware('auth');
-  Route::get('item', 'Admin\ItemController@index')->middleware('auth');
-  Route::get('item/edit', 'Admin\ItemController@edit')->middleware('auth');
-  Route::post('item/edit', 'Admin\ItemController@update')->middleware('auth');
-  Route::get('item/delete', 'Admin\ItemController@delete')->middleware('auth');
+  Route::get('category/create','Admin\CategoryController@add');
+  Route::post('category/create','Admin\CategoryController@create');
+  Route::get('category', 'Admin\CategoryController@index');
+  Route::get('category/edit', 'Admin\CategoryController@edit');
+  Route::post('category/edit', 'Admin\CategoryController@update');
+  Route::get('category/delete', 'Admin\CategoryController@delete');
+  Route::get('item/create','Admin\ItemController@add');
+  Route::post('item/create','Admin\ItemController@create');
+  Route::get('item', 'Admin\ItemController@index');
+  Route::get('item/edit', 'Admin\ItemController@edit');
+  Route::post('item/edit', 'Admin\ItemController@update');
+  Route::get('item/delete', 'Admin\ItemController@delete');
 });
 
 
