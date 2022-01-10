@@ -46,6 +46,14 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'user' => [
+           'driver' => 'session',
+           'provider' => 'users',
+       ],
+       'admin' => [ //追加
+           'driver' => 'session', //追加
+           'provider' => 'admins', //追加
+       ],
     ],
 
     /*
