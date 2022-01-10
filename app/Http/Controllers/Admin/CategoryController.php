@@ -18,11 +18,7 @@ class CategoryController extends Controller
     $this->validate($request, Category::$rules);
 
     $category = new Category;
-    $form = $request->all();
-
-    unset($form['_token']);
-
-    $category->fill($form);
+    $category->name = $request->get("category_name");
     $category->save();
 
     return redirect('admin/category/create');

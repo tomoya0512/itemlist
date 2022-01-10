@@ -15,8 +15,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-route::group(['prefix' => 'admin'],
-function() {
+
+/*
+|--------------------------------------------------------------------------
+| 1) User 認証不要
+|--------------------------------------------------------------------------
+*/
+Route::get('/', function () { return redirect('/home'); });
+
+
+/*
+|--------------------------------------------------------------------------
+| 2) User ログイン後
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'auth:user'], function() {
+    Route::get('home','UserController@home');
+    Route::get('signup','UserController@signup');
+});
+
+/*
+|--------------------------------------------------------------------------
+| 4) Admin ログイン後
+|--------------------------------------------------------------------------
+*/
+route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function() {
   Route::get('category/create','Admin\CategoryController@add')->middleware('auth');
   Route::post('category/create','Admin\CategoryController@create')->middleware('auth');
   Route::get('category', 'Admin\CategoryController@index')->middleware('auth');
@@ -28,7 +51,13 @@ function() {
   Route::get('item', 'Admin\ItemController@index')->middleware('auth');
   Route::get('item/edit', 'Admin\ItemController@edit')->middleware('auth');
   Route::post('item/edit', 'Admin\ItemController@update')->middleware('auth');
+  Route::get('item/delete', 'Admin\ItemController@delete')->middleware('auth');
 });
+
+
+
+
+
 
 Auth::routes();
 

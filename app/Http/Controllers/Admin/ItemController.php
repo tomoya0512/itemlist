@@ -15,16 +15,12 @@ class ItemController extends Controller
   }
 
   public function create(Request $request){
-
     // Varidationを行う
     $this->validate($request, Item::$rules);
 
     $item = new Item;
-    $form = $request->all();
-
-    unset($form['_token']);
-
-    $item->fill($form);
+    $item->name = $request->get("item_name");
+    $item->category_id = $request->get("category_id");
     $item->save();
 
     return redirect('admin/item/create');
@@ -38,6 +34,7 @@ class ItemController extends Controller
     } else{
       // それ以外はすべてのアイテムを取得する
       $posts = Item::all();
+
     }
     return view('admin.item.index', ['posts' => $posts, 'name' => $name]);
   }
@@ -49,7 +46,8 @@ class ItemController extends Controller
       if (empty($item)) {
         abort(404);
       }
-      return view('admin.item.edit', ['item_form' => $item]);
+      $categories = Category::all();
+      return view('admin.item.edit', ['item_form' => $item], ['categories' => $categories]);
   }
 
   public function update(Request $request){
@@ -66,5 +64,13 @@ class ItemController extends Controller
     $item->fill($item_form)->save();
 
     return redirect('admin/item');
+  }
+
+  public function delete(Request $request){
+      // 該当するCategory Modelを取得
+      $item = Item::find($request->id);
+      // 削除する
+      $item->delete();
+      return redirect('admin/item/');
   }
 }

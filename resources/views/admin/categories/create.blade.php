@@ -18,7 +18,7 @@
   @endif
   <form action="{{ action('Admin\CategoryController@create') }}" method="post" enctype="multipart/form-data">
     <label>カテゴリー名</label>
-    <input type="text" name="name" value="{{ old('name') }}">
+    <input type="text" name="category_name" value="{{ old('category_name') }}">
     <br>
 
     {{ csrf_field() }}
