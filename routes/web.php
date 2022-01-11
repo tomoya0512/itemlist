@@ -63,6 +63,12 @@ route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function() {
 
 
 
+
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
+    Route::post('login',    'Admin\LoginController@login');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

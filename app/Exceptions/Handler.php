@@ -59,3 +59,4 @@ class Handler extends ExceptionHandler
 
         return redirect()->guest(route('login'));
     }
+}
