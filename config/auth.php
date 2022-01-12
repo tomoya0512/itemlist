@@ -2,6 +2,7 @@
 
 return [
 
+<<<<<<< HEAD
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -50,5 +51,44 @@ return [
             'expire' => 60,                //パスワードリセットの制限時間(分)
         ],
     ],
+=======
+  'defaults' => [
+  'guard' => 'user',
+  'passwords' => 'users',
+],
+'guards' => [
+  'user' => [
+      'driver' => 'session', //認証方法
+      'provider' => 'users', //providersの利用するもの
+  ],
+  'admin' => [
+      'driver' => 'session',
+      'provider' => 'admins',
+  ],
+],
+'providers' => [
+  'users' => [
+      'driver' => 'eloquent',
+      'model' => App\Models\User::class,
+  ],
+
+  'admins' => [
+      'driver' => 'eloquent',             //認証へのアクセス方法
+      'model' => App\Models\Admin::class, //参照するテーブル
+  ],
+],
+'passwords' => [
+  'users' => [
+      'provider' => 'users',
+      'table' => 'password_resets',
+      'expire' => 60,
+  ],
+  'admins' => [
+      'provider' => 'admins',
+      'table' => 'password_resets',  //参照するテーブル
+      'expire' => 60,                //パスワードリセットの制限時間(分)
+  ],
+],
+>>>>>>> ee3b45f27350e4dc8ecf9f19a533c9279578f0de
 
 ];

@@ -53,6 +53,7 @@ route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function() {
   Route::post('item/edit', 'Admin\ItemController@update');
   Route::get('item/delete', 'Admin\ItemController@delete');
 
+<<<<<<< HEAD
 });
 
 Auth::routes();
@@ -65,5 +66,24 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('register', 'Admin\RegisterController@showRegisterForm')->name('admin.register');
     Route::post('register', 'Admin\RegisterController@register')->name('admin_auth.register');
 });
+=======
+  Route::get('home', 'AdminHomeController@index')->name('admin_auth.home');
+  Route::get('login', 'AdminAuth\LoginController@showLoginForm')->name('admin_auth.login');
+  Route::post('login', 'AdminAuth\LoginController@login')->name('admin_auth.login');
+  Route::post('logout', 'AdminAuth\LoginController@logout')->name('admin_auth.logout');
+  Route::get('register', 'AdminAuth\RegisterController@showRegisterForm')->name('admin_auth.register');
+  Route::post('register', 'AdminAuth\RegisterController@register')->name('admin_auth.register');
+});
+
+
+
+
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
+    Route::post('login',    'Admin\LoginController@login');
+});
+Auth::routes();
+>>>>>>> ee3b45f27350e4dc8ecf9f19a533c9279578f0de
 
 Route::get('/home', 'HomeController@index')->name('home');
