@@ -1,9 +1,7 @@
 <!-- layouts/admin.blade.phpを読み込む -->
 @extends('layouts.admin')
-
 <!-- admin.blade.phpの@yield('title')に'持ち物の新規作成'を埋め込む -->
 @section('title', '持ち物の新規作成')
-
 <!-- admin.blade.phpの@yield('content')に以下のタグを埋め込 -->
 @section('content')
   <div class="container">
@@ -18,7 +16,7 @@
   @endif
   <form action="{{ action('Admin\ItemController@create') }}" method="post" enctype="multipart/form-data">
     <label>アイテム名</label>
-    <input type="text" name="name" value="{{ old('name') }}">
+    <input type="text" name="item_name" value="{{ old('item_name') }}">
     <br>
       <label>カテゴリー</label>
       <select name="category_id" id="category-id">
@@ -29,7 +27,7 @@
       </select>
 
     {{ csrf_field() }}
-    <input type="submit" value="追加">
+    <button type="submit">追加</button>
     <br>
     <a href="{{ action('Admin\ItemController@index') }}" type="button">アイテム一覧へ戻る</a>
   </form>

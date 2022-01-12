@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-
 @section('title', '登録済みのアイテム一覧')
-
 @section('content')
    <h2>アイテム一覧</h2>
    <br>
@@ -30,10 +28,11 @@
         <tr>
           <th>{{ $item->id }}</th>
           <td>{{ str_limit($item->name, 100) }}</td>
-          <td>{{ str_limit($category->name) }}</td>
+          <td>{{ str_limit($item->category->name) }}</td>
           <td>
             <div>
               <a href="{{ action('Admin\ItemController@edit', ['id' => $item->id]) }}">編集</a>
+              <a href="{{ action('Admin\ItemController@delete', ['id' => $item->id]) }}">削除</a>
             </div>
           </td>
           <br>

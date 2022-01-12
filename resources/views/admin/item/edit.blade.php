@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-
 @section('title', 'アイテムの編集')
-
 @section('content')
   <h2>アイテムの編集</h2>
   <form action="{{ action('Admin\ItemController@update') }}" method="post" enctype="multipart/form-data">
@@ -17,7 +15,12 @@
     <br>
 
     <label for="category">カテゴリー</label>
-    <input type="text" name="category" value="{{ $item_form->category_id }}">
+    <select name="category_id" id="category-id">
+      <option value="">選択してください</option>
+      @foreach ($categories as $category)
+        <option value="{{ $category->id }}">{{ $category->name }}</option>
+      @endforeach
+    </select>
     <br>
 
     <input type="hidden" name="id" value="{{ $item_form->id }}">

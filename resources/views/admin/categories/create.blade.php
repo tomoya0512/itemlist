@@ -1,9 +1,7 @@
 <!-- layouts/admin.blade.phpを読み込む -->
 @extends('layouts.admin')
-
 <!-- admin.blade.phpの@yield('title')に'持ち物の新規作成'を埋め込む -->
 @section('title', 'カテゴリーの新規作成')
-
 <!-- admin.blade.phpの@yield('content')に以下のタグを埋め込 -->
 @section('content')
   <div class="container">
@@ -18,12 +16,11 @@
   @endif
   <form action="{{ action('Admin\CategoryController@create') }}" method="post" enctype="multipart/form-data">
     <label>カテゴリー名</label>
-    <input type="text" name="name" value="{{ old('name') }}">
+    <input type="text" name="category_name" value="{{ old('category_name') }}">
     <br>
 
     {{ csrf_field() }}
     <input type="submit" value="追加">
   </form>
   <a href="{{ action('Admin\CategoryController@index') }}" type="button">カテゴリー一覧へ戻る</a>
-
 @endsection
