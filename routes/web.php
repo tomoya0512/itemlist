@@ -40,33 +40,30 @@ Route::group(['middleware' => 'auth:user'], function() {
 |--------------------------------------------------------------------------
 */
 route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function() {
-  Route::get('category/create','Admin\CategoryController@add')->middleware('auth');
-  Route::post('category/create','Admin\CategoryController@create')->middleware('auth');
-  Route::get('category', 'Admin\CategoryController@index')->middleware('auth');
-  Route::get('category/edit', 'Admin\CategoryController@edit')->middleware('auth');
-  Route::post('category/edit', 'Admin\CategoryController@update')->middleware('auth');
-  Route::get('category/delete', 'Admin\CategoryController@delete')->middleware('auth');
-  Route::get('item/create','Admin\ItemController@add')->middleware('auth');
-  Route::post('item/create','Admin\ItemController@create')->middleware('auth');
-  Route::get('item', 'Admin\ItemController@index')->middleware('auth');
-  Route::get('item/edit', 'Admin\ItemController@edit')->middleware('auth');
-  Route::post('item/edit', 'Admin\ItemController@update')->middleware('auth');
-  Route::get('item/delete', 'Admin\ItemController@delete')->middleware('auth');
+  Route::get('category/create','Admin\CategoryController@add');
+  Route::post('category/create','Admin\CategoryController@create');
+  Route::get('category', 'Admin\CategoryController@index');
+  Route::get('category/edit', 'Admin\CategoryController@edit');
+  Route::post('category/edit', 'Admin\CategoryController@update');
+  Route::get('category/delete', 'Admin\CategoryController@delete');
+  Route::get('item/create','Admin\ItemController@add');
+  Route::post('item/create','Admin\ItemController@create');
+  Route::get('item', 'Admin\ItemController@index');
+  Route::get('item/edit', 'Admin\ItemController@edit');
+  Route::post('item/edit', 'Admin\ItemController@update');
+  Route::get('item/delete', 'Admin\ItemController@delete');
+
 });
 
-
-
-
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('home', 'Admin\HomeController@index')->name('admin_auth.home');
+    Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin_auth.login');
+    Route::post('login', 'Admin\LoginController@login')->name('admin.login');
+    Route::post('logout', 'Admin\LoginController@logout')->name('admin_auth.logout');
+    Route::get('register', 'Admin\RegisterController@showRegisterForm')->name('admin.register');
+    Route::post('register', 'Admin\RegisterController@register')->name('admin_auth.register');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');

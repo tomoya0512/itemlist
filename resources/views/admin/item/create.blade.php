@@ -18,7 +18,7 @@
   @endif
   <form action="{{ action('Admin\ItemController@create') }}" method="post" enctype="multipart/form-data">
     <label>アイテム名</label>
-    <input type="text" name="item_name" value="{{ old('item_name') }}">
+    <input type="text" name="name" value="{{ old('name') }}">
     <br>
       <label>カテゴリー</label>
       <select name="category_id" id="category-id">
@@ -29,7 +29,7 @@
       </select>
 
     {{ csrf_field() }}
-    <button type="submit">追加</button>
+    <input type="submit" value="追加">
     <br>
     <a href="{{ action('Admin\ItemController@index') }}" type="button">アイテム一覧へ戻る</a>
   </form>

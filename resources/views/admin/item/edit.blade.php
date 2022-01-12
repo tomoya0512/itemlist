@@ -16,6 +16,10 @@
     <input type="text" name="name" value="{{ $item_form->name }}">
     <br>
 
+    <label for="category">カテゴリー</label>
+    <input type="text" name="category" value="{{ $item_form->category_id }}">
+    <br>
+
     <input type="hidden" name="id" value="{{ $item_form->id }}">
     {{ csrf_field() }}
     <input type="submit" value="更新">

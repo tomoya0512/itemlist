@@ -10,13 +10,13 @@ class Item extends Model
 
 
     public static $rules = array(
-      'item_name' => 'required',
+      'name' => 'required',
       'category_id' => 'required'
     );
 
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->hasOne('App\Category', 'foreign_key');
 
     }
 }

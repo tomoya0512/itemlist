@@ -9,6 +9,6 @@ class Category extends Model
   protected $guarded = array('id');
 
   public static $rules = array(
-    'category_name' => 'required',
+    'name' => 'required',
   );
 }
