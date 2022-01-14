@@ -33,21 +33,20 @@ class CategoryController extends Controller
 
   public function edit(Request $request)
   {
-      // Item Modelからデータを取得する
-      $item = Item::find($request->id);
-      if (empty($item)) {
+      // Category Modelからデータを取得する
+      $category = Category::find($request->id);
+      if (empty($category)) {
         abort(404);
       }
-
-      $categories = Category::all();
-      return view('admin.item.edit', ['item_form' => $item], ['categories' => $categories]);
+      return view('admin.categories.edit', ['category_form' => $category]);
   }
 
 
   public function update(Request $request){
+    $this->validate($request, Category::$rules);
     // Validationをかける
     $this->validate($request, Category::$rules);
-    // News Modelからデータを取得する
+    // Category Modelからデータを取得する
     $category = Category::find($request->id);
     // 送信されてきたフォームデータを格納する
     $category_form = $request->all();
@@ -55,6 +54,7 @@ class CategoryController extends Controller
     // 該当するデータを上書きして保存する
     $category->fill($category_form)->save();
     return redirect('admin/category');
+    
   }
 
   public function delete(Request $request){

@@ -35,6 +35,7 @@ class ItemController extends Controller
     }
     return view('admin.item.index', ['posts' => $posts, 'name' => $name]);
   }
+
   public function edit(Request $request)
   {
       // Item Modelからデータを取得する
@@ -49,12 +50,17 @@ class ItemController extends Controller
   public function update(Request $request){
     // Validationをかける
     $this->validate($request, Item::$rules);
-    // News Modelからデータを取得する
+    // Item Modelからデータを取得する
     $item = Item::find($request->id);
-    // 送信されてきたフォームデータを格納する
+    
+    //↓自分で
+    // $item->name = $request->get("item_name");
+    // $item->category_id = $request->get("category_id");
+    // $item->save();
+
+    //↓カリキュラム
     $item_form = $request->all();
     unset($item_form['_token']);
-    // 該当するデータを上書きして保存する
     $item->fill($item_form)->save();
 
     return redirect('admin/item');
