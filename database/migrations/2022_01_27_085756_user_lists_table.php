@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UserListTable extends Migration
+class UserListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,11 +16,11 @@ class UserListTable extends Migration
         Schema::create('lists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->DATE('execution_date');
+            $table->date('execution_date');
             $table->bigIncrements('destination_name');
             $table->text('memo');
-            $table->foreign('user_id')->references('id')->on('users');
-
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->timestamps();
         });
     }

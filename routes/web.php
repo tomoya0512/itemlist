@@ -9,7 +9,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'],function() {
-  Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+  Route::get('home', 'User\ItemListController@home')->name('home');
+  Route::get('list/create', 'User\ItemListController@add');
+  Route::get('list', 'User\ItemListController@index');
+
 });  
 
 Route::group(['prefix' => 'admin'], function(){

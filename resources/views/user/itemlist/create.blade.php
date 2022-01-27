@@ -13,7 +13,7 @@
     <br>
 
     <label>目的地</label>
-    <input type="text" name="destination_name" value="{{ old('destination_name?') }}">
+    <input type="text" name="destination_name" value="{{ old('destination_name') }}">
     <br>
 
     <label>持ち物</label>

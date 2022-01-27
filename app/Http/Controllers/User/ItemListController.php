@@ -14,4 +14,9 @@ class ItemListController extends Controller
     public function add(){
         return view('user.itemlist.create');
     }
+
+    public function index(){
+        return view('user.itemlist.index');
+    }
+
 }
