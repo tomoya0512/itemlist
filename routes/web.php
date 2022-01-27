@@ -1,14 +1,27 @@
 <?php
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
-route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function() {
+Route::group(['middleware' => 'auth'],function() {
+  Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+});  
+
+Route::group(['prefix' => 'admin'], function(){
+  Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+  Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
+  Route::post('login', 'Admin\LoginController@login')->name('admin.login');
+  Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
+  Route::get('register', 'Admin\RegisterController@showRegisterForm')->name('admin.register');
+  Route::post('register', 'Admin\RegisterController@register')->name('adminauth.register');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function() {
   Route::get('category/create','Admin\CategoryController@add');
   Route::post('category/create','Admin\CategoryController@create');
   Route::get('category', 'Admin\CategoryController@index');
@@ -23,11 +36,3 @@ route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'],function() {
   Route::get('item/delete', 'Admin\ItemController@delete');
 });
 
-Route::group(['prefix' => 'admin'], function(){
-    Route::get('home', 'Admin\HomeController@index')->name('admin.home');
-    Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
-    Route::post('login', 'Admin\LoginController@login')->name('admin.login');
-    Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
-    Route::get('register', 'Admin\RegisterController@showRegisterForm')->name('admin.register');
-    Route::post('register', 'Admin\RegisterController@register')->name('adminauth.register');
-});
