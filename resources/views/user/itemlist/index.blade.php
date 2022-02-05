@@ -4,7 +4,7 @@
 
 @section('content')
    <h2>アイテムリスト一覧</h2>
-    <form action="{{ action('Admin\ItemListController@index') }}" method="get">
+   <form action="{{ action('Admin\ItemListController@index') }}" method="get">
    <label>アイテムリスト名</label>
    <input type="text" name="name" value="{{ $name }}">
    {{ csrf_field() }}
@@ -30,15 +30,12 @@
           <td>{{ str_limit($itemlist->destination_name) }}</td>
           <td>{{ str_limit($itemlist->item_name) }}</td>
           <td>{{ str_limit($itemlist->memo) }}</td>
-          <td>
-            <div>
-              <a href="{{ action('Admin\ItemListController@edit', ['id' => $item->id]) }}">編集</a>
-              <a href="{{ action('Admin\ItemListController@delete', ['id' => $item->id]) }}">削除</a>
-            </div>
-          </td>
-          <br>
         </tr>
       @endforeach
+      <div>
+        <a href="{{ action('Admin\ItemListController@edit', ['id' => $item->id]) }}">編集</a>
+        <a href="{{ action('Admin\ItemListController@delete', ['id' => $item->id]) }}">削除</a>
+      </div>
     </tbody>
     <a href="{{ action('User\ItemListController@main') }}" type="button">メイン画面へ戻る</a>
 @endsection

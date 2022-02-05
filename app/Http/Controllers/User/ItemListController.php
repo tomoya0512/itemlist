@@ -28,7 +28,16 @@ class ItemListController extends Controller
         return redirect('list');
     }
 
-    public function index(){
+    public function index(Request $request){
+        $list_name = $request->list_name;
+    if ($list_name != '') {
+      // 検索されたら検索結果を取得する
+      $posts = Item::where('list_name', $list_name)->get();
+    } else{
+      // それ以外はすべてのアイテムを取得する
+      $posts = Item::all();
+    }
+
         return view('user.itemlist.index');
     }
 
@@ -38,7 +47,7 @@ class ItemListController extends Controller
           abort(404);
         }
   
-        return view('user.itemlist.edit', ['itemlist_form' => $itemlist]);
+        return view('user.itemlist', ['itemlist_form' => $itemlist]);
     }
 
     public function update(Request $request){

@@ -36,8 +36,7 @@ class ItemController extends Controller
     return view('admin.item.index', ['posts' => $posts, 'name' => $name]);
   }
 
-  public function edit(Request $request)
-  {
+  public function edit(Request $request){
       // Item Modelからデータを取得する
       $item = Item::find($request->id);
       if (empty($item)) {
