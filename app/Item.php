@@ -8,7 +8,6 @@ class Item extends Model
 {
     protected $guarded = array('id');
 
-
     public static $rules = array(
       'name' => 'required',
       'category_id' => 'required'
@@ -17,6 +16,5 @@ class Item extends Model
     public function category()
     {
         return $this->belongsTo('App\Category');
-
     }
 }

@@ -148,7 +148,9 @@ return [
     'attributes' => [
       'category_name' => 'カテゴリー名',
       'item_name' => 'アイテム名',
-      'category_id' => 'カテゴリー'
+      'category_id' => 'カテゴリー',
+      'destination_name' => '目的地',
+      'list_name' => 'リスト名'
     ],
 
 ];

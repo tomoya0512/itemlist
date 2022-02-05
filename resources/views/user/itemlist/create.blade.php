@@ -3,20 +3,20 @@
 @section('title', '持ち物の新規作成')
 
 @section('content')
-<form action="{{ action('Admin\CategoryController@create') }}" method="post" enctype="multipart/form-data">
-    <label>リスト名</label>
-    <input type="text" name="name" value="{{ old('name') }}">
+<form action="{{ action('User\IteListController@create') }}" method="post" enctype="multipart/form-data">
+    <label>リスト名(必須)</label>
+    <input type="text" name="list_name" value="{{ old('name') }}">
     <br>
 
     <label>日にち</label>
     <input type="" name="execution_date" value="{{ old('execution_date') }}">
     <br>
 
-    <label>目的地</label>
+    <label>目的地(必須)</label>
     <input type="text" name="destination_name" value="{{ old('destination_name') }}">
     <br>
 
-    <label>持ち物</label>
+    <label>持ち物(必須)</label>
     <select name="item_name" id="item-id">
         <option value="">選択してください</option>
         @foreach ($items as $item)

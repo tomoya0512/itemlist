@@ -17,7 +17,7 @@ class UserListsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->date('execution_date');
-            $table->bigIncrements('destination_name');
+            $table->string('destination_name');
             $table->text('memo');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');

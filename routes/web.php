@@ -11,8 +11,8 @@ Auth::routes();
 Route::group(['middleware' => 'auth'],function() {
   Route::get('home', 'User\ItemListController@home')->name('home');
   Route::get('list/create', 'User\ItemListController@add');
+  Route::post('list/create', 'User\ItemListController@create');
   Route::get('list', 'User\ItemListController@index');
-
 });  
 
 Route::group(['prefix' => 'admin'], function(){
